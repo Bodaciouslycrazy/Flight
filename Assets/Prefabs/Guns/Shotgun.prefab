@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fa243ed7201ccd4785e91f3dd4e0c8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Projectile: {fileID: 1405378610095172, guid: ec5e388c5ebe1a840a9263f76eac5580, type: 2}
+  Projectile: {fileID: 1163212273691422, guid: 41eca8c78bbdac1469fffb2e1feed689, type: 2}
   Pointer: {fileID: 212773285944003258}
   FIRERATE: 0.75
   Knockback: 2.5

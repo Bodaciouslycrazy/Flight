@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Bomber : Enemy {
 
+	public int Damage = 5;
 	public float Impulse = 5;
 	public float JUMPRATE = 2;
 	public float RandomAngle = 45; //degrees
@@ -20,7 +21,10 @@ public class Bomber : Enemy {
 
 		float Dist = Vector2.Distance(transform.position, MainShip.Singleton.transform.position);
 
-		if (CurrTime <= 0 && Dist <= AggroDist)
+		RaycastHit2D RC = Physics2D.Raycast(transform.position, MainShip.Singleton.transform.position - transform.position, AggroDist);
+
+		
+		if (CurrTime <= 0 && RC.collider != null && RC.collider.Equals(MainShip.Singleton.GetComponent<Collider2D>()))
 		{
 			CurrTime += JUMPRATE;
 
@@ -28,7 +32,8 @@ public class Bomber : Enemy {
 			float Angle = Mathf.Atan2(Force.y, Force.x) + (Random.value * RandomAngle * Mathf.Deg2Rad) - (RandomAngle * Mathf.Deg2Rad / 2f);
 			Force = new Vector2(Mathf.Cos(Angle), Mathf.Sin(Angle)) * Impulse;
 
-			GetComponent<Rigidbody2D>().AddForce( Force , ForceMode2D.Impulse);
+			GetComponent<Rigidbody2D>().AddForce(Force, ForceMode2D.Impulse);
+
 		}
 		else if (CurrTime <= 0)
 			CurrTime = 0;

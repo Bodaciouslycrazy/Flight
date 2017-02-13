@@ -11,12 +11,15 @@ public class MainShip : Ship {
 	public short MaxHeat = 100;
 	public float Cooldown = 10f; //Heat per Second
 	public float HeatDPS = 10f;
+	public float Penalty = 3f;
+	public bool Overheated = false;
 	private float TimeBank = 0f;
+	private float PenaltyBank = 0f;
 
 	public Image HealthBar;
 	public Image HeatBar;
 
-
+	public List<GunControl> Guns = new List<GunControl>();
 
 	void Start()
 	{
@@ -27,7 +30,16 @@ public class MainShip : Ship {
 		//Check for overheat
 		if(Heat >= MaxHeat)
 		{
-			Destroy(gameObject);
+			Overheated = true;
+			PenaltyBank = Penalty;
+			SetGunsEnable(false);
+		}
+
+		PenaltyBank -= Time.deltaTime;
+		if(PenaltyBank <= 0f && Overheated)
+		{
+			Overheated = false;
+			SetGunsEnable(true);
 		}
 		
 		//cooldown heat
@@ -42,5 +54,13 @@ public class MainShip : Ship {
 		//Display heat and health
 		HealthBar.fillAmount = (float)Health / (float)MaxHealth;
 		HeatBar.fillAmount = (float)Heat / (float)MaxHeat;
+	}
+
+	public void SetGunsEnable(bool e)
+	{
+		for(int i = 0; i < Guns.Count; i++)
+		{
+			Guns[i].enabled = e;
+		}
 	}
 }

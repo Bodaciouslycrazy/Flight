@@ -8,7 +8,14 @@ public class Projectile : MonoBehaviour {
 	public float Speed = 8f;
 	public float Timeout = 3f;
 
+	public bool Peircing = false;
 	public string Target = "";
+
+	void Start()
+	{
+		float Angle = transform.eulerAngles.z * Mathf.Deg2Rad;
+		GetComponent<Rigidbody2D>().velocity = Speed * new Vector2(Mathf.Cos(Angle), Mathf.Sin(Angle));
+	}
 
 	void Update()
 	{
@@ -19,7 +26,7 @@ public class Projectile : MonoBehaviour {
 			return;
 		}
 
-		
+		/*
 		float Dist = Speed * Time.deltaTime;
 		float Angle = transform.eulerAngles.z * Mathf.Deg2Rad;
 		Vector2 Displacement = new Vector2(Mathf.Cos(Angle), Mathf.Sin(Angle)) * Dist;
@@ -27,10 +34,14 @@ public class Projectile : MonoBehaviour {
 
 		Vector2 NewPos = (Vector2)transform.position + Displacement;
 		transform.position = NewPos;
+		*/
 	}
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		Destroy(gameObject);
+		if (!other.tag.Equals("Projectile") && !(other.tag.Equals("Enemy") && Peircing) )
+		{
+			Destroy(gameObject);
+		}
 	}
 }

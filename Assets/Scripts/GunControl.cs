@@ -26,6 +26,7 @@ public class GunControl : MonoBehaviour {
 	void Start()
 	{
 		SetPlayer(PlayerNum);
+		transform.parent.GetComponent<MainShip>().Guns.Add(this);
 	}
 
 	public void SetPlayer(short pl)

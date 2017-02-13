@@ -111,10 +111,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 856f120e8bcdaa14cac60f0f7281d701, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Projectile: {fileID: 1432335106645596, guid: e1ed7a3c29b455c4b8c0dac20fe8428e, type: 2}
+  Projectile: {fileID: 1206251368314432, guid: c23fd08ba33bc984597e684e20ba3412, type: 2}
   Pointer: {fileID: 212093880801334752}
   FIRERATE: 1.25
-  Knockback: 4
+  Knockback: 5
   HeatPerShot: 15
   PlayerNum: 1
   Offset: 0.8

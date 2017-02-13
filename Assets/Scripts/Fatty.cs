@@ -45,7 +45,6 @@ public class Fatty : Enemy {
 
 					Vector2 Displacement = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * 2;
 					GameObject Proj = Instantiate(Projectile, transform.position + (Vector3)Displacement, Quaternion.Euler(0, 0, angle * Mathf.Rad2Deg)) as GameObject;
-					Proj.GetComponent<Projectile>().Damage = Damage;
 				}
 			}
 

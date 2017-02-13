@@ -6,6 +6,7 @@ public class FollowObject : MonoBehaviour {
 
 	public Transform Following;
 
+	public float SpeedPerUnit = 3f;
 
 	// Use this for initialization
 	void Start () {
@@ -14,10 +15,17 @@ public class FollowObject : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		//Need to do calculus
 		Vector2 Target = Following.position;
 		Vector2 Pos = transform.position;
-		//float lerppos = Mathf.Min(PercentPerSecond * Time.deltaTime, 1f);
+		float vel =  SpeedPerUnit * Vector2.Distance(Target, Pos);
+		Vector2 Dir = Target - Pos;
+		Dir.Normalize();
 
-		transform.position = (Vector3)Vector2.Lerp(Pos, Target, 1f) + new Vector3(0,0,transform.position.z);
+		Pos += Dir * vel * Time.deltaTime;
+
+
+
+		transform.position = (Vector3)Pos + new Vector3(0,0,transform.position.z);
 	}
 }
