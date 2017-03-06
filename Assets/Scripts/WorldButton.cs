@@ -6,7 +6,7 @@ public class WorldButton : MonoBehaviour {
 
 	public bool Pressed = false;
 	public float TIMER = 10f;
-	public float CurTime = 0f;
+	private float CurTime = 0f;
 
 	public GameObject[] Recievers;
 
@@ -29,9 +29,14 @@ public class WorldButton : MonoBehaviour {
 		SelectedUpdate = PressedUpdate;
 		CurTime = TIMER;
 
+		Transform Child = transform.GetChild(0);
+		Vector2 pos = Child.position;
+		pos += (Vector2)Child.up * -0.09f * transform.localScale.y;
+		Child.position = pos;
+
 		for(int i = 0; i < Recievers.Length; i++)
 		{
-			Recievers[i].GetComponent<WorldButtonReciever>().OnPress();
+			Recievers[i].GetComponent<IButtonReciever>().OnPress();
 		}
 	}
 
@@ -40,9 +45,14 @@ public class WorldButton : MonoBehaviour {
 		Pressed = false;
 		SelectedUpdate = UnpressedUpdate;
 
+		Transform Child = transform.GetChild(0);
+		Vector2 pos = Child.position;
+		pos += (Vector2)Child.up * 0.09f * transform.localScale.y;
+		Child.position = pos;
+
 		for (int i = 0; i < Recievers.Length; i++)
 		{
-			Recievers[i].GetComponent<WorldButtonReciever>().OnUnpress();
+			Recievers[i].GetComponent<IButtonReciever>().OnUnpress();
 		}
 	}
 

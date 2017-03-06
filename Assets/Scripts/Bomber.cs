@@ -45,8 +45,9 @@ public class Bomber : Enemy {
 		if (col.gameObject.tag.Equals("Player"))
 		{
 			col.gameObject.GetComponent<Ship>().Hit(Damage, gameObject);
+			Destroy(gameObject);
 		}
 
-		Destroy(gameObject);
+		
 	}
 }

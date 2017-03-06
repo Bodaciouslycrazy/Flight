@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface WorldButtonReciever{
+public interface IButtonReciever{
 	void OnPress();
 	void OnUnpress();
 }

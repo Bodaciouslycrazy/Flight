@@ -9,12 +9,15 @@ public class MainShip : Ship {
 
 	public short Heat = 0;
 	public short MaxHeat = 100;
+	private DCooldown UpdateHeat;
 	public float Cooldown = 10f; //Heat per Second
-	public float HeatDPS = 10f;
-	public float Penalty = 3f;
+
 	public bool Overheated = false;
+	public float FastCooldown = 20f; //Heat per Second
+	public float HeatDamage = 10;
+	public short PenaltyEnd = 50; //when heat reaches this, the ship regains control.
+	
 	private float TimeBank = 0f;
-	private float PenaltyBank = 0f;
 
 	public Image HealthBar;
 	public Image HeatBar;
@@ -24,37 +27,55 @@ public class MainShip : Ship {
 	void Start()
 	{
 		Singleton = gameObject;
+		UpdateHeat = NormalCool;
 	}
 
 	void Update () {
-		//Check for overheat
-		if(Heat >= MaxHeat)
-		{
-			Overheated = true;
-			PenaltyBank = Penalty;
-			SetGunsEnable(false);
-		}
+		UpdateHeat();
 
-		PenaltyBank -= Time.deltaTime;
-		if(PenaltyBank <= 0f && Overheated)
-		{
-			Overheated = false;
-			SetGunsEnable(true);
-		}
-		
+		//Display heat and health
+		HealthBar.fillAmount = (float)Health / (float)MaxHealth;
+		HeatBar.fillAmount = (float)Heat / (float)MaxHeat;
+	}
+
+	//Cooldown Delegate
+	private delegate void DCooldown();
+
+	private void NormalCool()
+	{
 		//cooldown heat
 		TimeBank += Time.deltaTime;
 		int lost = Mathf.FloorToInt(TimeBank * Cooldown);
 		Heat -= (short)lost;
 		TimeBank -= lost / Cooldown;
 
-		if (Heat <= 0)
+		if(Heat >= MaxHeat)
+		{
+			Overheated = true;
+			SetGunsEnable(false);
+			UpdateHeat = OverheatCool;
+		}
+		else if (Heat <= 0)
 			Heat = 0;
-
-		//Display heat and health
-		HealthBar.fillAmount = (float)Health / (float)MaxHealth;
-		HeatBar.fillAmount = (float)Heat / (float)MaxHeat;
 	}
+
+	private void OverheatCool()
+	{
+		//cooldown heat
+		TimeBank += Time.deltaTime;
+		int lost = Mathf.FloorToInt(TimeBank * FastCooldown);
+		Heat -= (short)lost;
+		TimeBank -= lost / FastCooldown;
+
+		if(Heat <= PenaltyEnd)
+		{
+			Overheated = false;
+			SetGunsEnable(true);
+			UpdateHeat = NormalCool;
+		}
+	}
+
+	//Random Functions
 
 	public void SetGunsEnable(bool e)
 	{

@@ -1,0 +1,15 @@
+List of things to do!
+(Rated from most important to least important)
+
+---Things to design---
+4th gun
+Finish first level shape
+Sound Effects
+main menu
+
+
+---Things to Draw---
+the 4 guns
+Bomber enemies
+Spike ball (Environmental hazzard)
+Start working on scenery
