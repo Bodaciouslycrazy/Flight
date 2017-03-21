@@ -2891,6 +2891,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 100
   MaxHealth: 100
+  DeathSound: {fileID: 8300000, guid: 3ee55edbb9168a147b8d961cac788652, type: 3}
   Heat: 0
   MaxHeat: 100
   Cooldown: 8

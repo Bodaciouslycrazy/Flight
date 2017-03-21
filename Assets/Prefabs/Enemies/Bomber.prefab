@@ -90,6 +90,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 50
   MaxHealth: 100
+  DeathSound: {fileID: 8300000, guid: 3ee55edbb9168a147b8d961cac788652, type: 3}
   AggroDist: 10
   Damage: 5
   Impulse: 5
