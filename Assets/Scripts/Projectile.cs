@@ -39,7 +39,7 @@ public class Projectile : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		if (!other.tag.Equals("Projectile") && !(other.tag.Equals("Enemy") && Peircing) )
+		if (!(other.tag.Equals("Enemy") && Peircing) )
 		{
 			Destroy(gameObject);
 		}

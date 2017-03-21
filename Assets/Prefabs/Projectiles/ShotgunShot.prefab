@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114025785364510878}
   - component: {fileID: 58899195643481880}
   - component: {fileID: 50882936740090718}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ShotgunShot
   m_TagString: Projectile
   m_Icon: {fileID: 0}
@@ -91,6 +91,7 @@ MonoBehaviour:
   Damage: 10
   Speed: 8
   Timeout: 0.25
+  Peircing: 0
   Target: Enemy
 --- !u!212 &212915431395640354
 SpriteRenderer:

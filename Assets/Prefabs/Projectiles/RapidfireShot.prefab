@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114885965513823526}
   - component: {fileID: 58777186568030366}
   - component: {fileID: 50658851301429764}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RapidfireShot
   m_TagString: Projectile
   m_Icon: {fileID: 0}
@@ -91,6 +91,7 @@ MonoBehaviour:
   Damage: 10
   Speed: 10
   Timeout: 1
+  Peircing: 0
   Target: Enemy
 --- !u!212 &212253173019896452
 SpriteRenderer:

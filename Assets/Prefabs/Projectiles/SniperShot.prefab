@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114503070631546230}
   - component: {fileID: 60192306906106522}
   - component: {fileID: 50300837824395310}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SniperShot
   m_TagString: Projectile
   m_Icon: {fileID: 0}

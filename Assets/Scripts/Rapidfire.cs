@@ -17,6 +17,7 @@ public class Rapidfire : GunControl {
 			if(Input.GetAxisRaw("A" + PlayerNum) >= 1)
 			{
 				Fire();
+                AudioSource.PlayClipAtPoint( FireSound , transform.position);
 				CurrTime += FIRERATE;
 			}
 			else

@@ -9,6 +9,7 @@ public class GunControl : MonoBehaviour {
 
 	public SpriteRenderer Pointer;
 
+    public AudioClip FireSound;
 
 	public float FIRERATE = .33f;
 	protected float CurrTime = .33f;

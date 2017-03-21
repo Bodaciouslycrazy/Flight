@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114296414587939564}
   - component: {fileID: 58063021674707330}
   - component: {fileID: 50195343440069608}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FattyShot
   m_TagString: Projectile
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ MonoBehaviour:
   Speed: 2.5
   Timeout: 3
   Peircing: 0
-  Target: Enemy
+  Target: Player
 --- !u!212 &212540593722015316
 SpriteRenderer:
   m_ObjectHideFlags: 1
