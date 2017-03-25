@@ -7,7 +7,8 @@ public class GunControl : MonoBehaviour {
 	[Tooltip("Prefab of the projectile this gun shoots.")]
 	public GameObject Projectile;
 
-	public SpriteRenderer Pointer;
+	public SpriteRenderer Outline;
+    public SpriteRenderer Fill;
 
     public AudioClip FireSound;
 
@@ -15,9 +16,11 @@ public class GunControl : MonoBehaviour {
 	protected float CurrTime = .33f;
 
 	public float Knockback;
-	public short HeatPerShot = 3;
+	public short EnergyPerShot = 3;
 	public short PlayerNum = 1;
 	public float Offset = 0;
+
+    public ButtonInfo Button;
 
 	readonly Color[] PlayerColors = {	new Color(0,255,0),
 										new Color(0,0,255),
@@ -35,7 +38,15 @@ public class GunControl : MonoBehaviour {
 		if(pl >= 1 && pl <= 4)
 		{
 			PlayerNum = pl;
-			Pointer.color = PlayerColors[pl - 1];
+			Outline.color = PlayerColors[pl - 1];
+            Fill.color = PlayerColors[pl - 1];
+
+            Button = new ButtonInfo();
+            Button.Name = "A" + PlayerNum;
+            Button.Down = false;
+            Button.Pressed = false;
+            Button.Released = false;
+            Button.LastFrame = false;
 		}
 		else
 		{
@@ -47,11 +58,6 @@ public class GunControl : MonoBehaviour {
 	void Update () {
 
 		UpdateRotation();
-
-		if(Input.GetAxisRaw("A" + PlayerNum) >= 1f)
-		{
-			Fire();
-		}
 	}
 
 	public void UpdateRotation()
@@ -78,10 +84,32 @@ public class GunControl : MonoBehaviour {
 		//Create Knockback
 		float Angle = transform.eulerAngles.z * Mathf.Deg2Rad;
 		Vector2 Force = new Vector2(Mathf.Cos(Angle), Mathf.Sin(Angle)) * -Knockback;
-		transform.parent.GetComponent<Rigidbody2D>().AddForce(Force, ForceMode2D.Impulse);
-
-		//Add Heat
-		transform.parent.GetComponent<MainShip>().Heat += HeatPerShot;
-		
+		transform.parent.GetComponent<Rigidbody2D>().AddForce(Force, ForceMode2D.Impulse);		
 	}
+
+    public struct ButtonInfo
+    {
+        public string Name;
+        public bool Down;
+        public bool LastFrame;
+        public bool Pressed;
+        public bool Released;
+    }
+
+    public void UpdateButton()
+    {
+        //Update Input
+        Button.Down = Input.GetAxisRaw(Button.Name) >= 1;
+        Button.Pressed = Button.Down && !Button.LastFrame;
+        Button.Released = !Button.Down && Button.LastFrame;
+        Button.LastFrame = Button.Down;
+    }
+
+    public void SetFill()
+    {
+        float scale =   1- (CurrTime / FIRERATE);
+        Vector3 NS = Fill.transform.localScale;
+        NS.x = scale * 2;
+        Fill.transform.localScale = NS;
+    }
 }

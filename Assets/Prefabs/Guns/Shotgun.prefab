@@ -113,13 +113,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Projectile: {fileID: 1163212273691422, guid: 41eca8c78bbdac1469fffb2e1feed689, type: 2}
   Pointer: {fileID: 212773285944003258}
+  FireSound: {fileID: 8300000, guid: 7c5562b4172936944b0d7a7314ce3596, type: 3}
   FIRERATE: 0.75
-  Knockback: 2.5
-  HeatPerShot: 10
+  Knockback: 2
+  EnergyPerShot: 3
   PlayerNum: 1
   Offset: 0
   Spread: 90
   Pellets: 8
+  Firing: 0
 --- !u!212 &212173350049985922
 SpriteRenderer:
   m_ObjectHideFlags: 1

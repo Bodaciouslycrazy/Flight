@@ -5,10 +5,9 @@ using UnityEngine.UI;
 
 public class MenuScript : MonoBehaviour {
 
-	public static float Deadzone = .5f;
+	public static float Deadzone = .8f;
 	public static Color Selected = new Color(0, 255, 0, .5f);
 	public static Color Normal = new Color(255, 255, 255, .5f);
-	public static string[] WeaponNames = { "Rapidfire", "Shotgun", "Sniper", "TBD" };
 
 	public GameObject PressA;
 	public GameObject WeaponSelect;
@@ -18,7 +17,7 @@ public class MenuScript : MonoBehaviour {
 	public static bool[] WeaponTaken = { false, false, false, false };
 
 	public int PNum = 1;
-	State CurState = State.Join;
+	public State CurState = State.Join;
 	public int CurWeapon = 0;
 	PrevInput LastIP = new PrevInput();
 	
@@ -81,7 +80,7 @@ public class MenuScript : MonoBehaviour {
 
 	}
 
-	enum State
+	public enum State
 	{
 		Join,
 		Weapon,

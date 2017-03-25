@@ -7,19 +7,35 @@ public class Shotgun : GunControl {
 	public float Spread = 90;
 	public int Pellets = 8;
 
+    public bool Firing = false;
+
 	void Update()
 	{
 		UpdateRotation();
+        UpdateButton();
+
+        if (Button.Pressed)
+            Firing = true;
+        if (Button.Released)
+            Firing = false;
 
 		//Fire Gun
 		CurrTime -= Time.deltaTime;
 
 		if (CurrTime <= 0)
 		{
-			if (Input.GetAxisRaw("A" + PlayerNum) >= 1)
+			if (Firing)
 			{
-				Fire();
-				CurrTime += FIRERATE;
+                if (transform.parent.GetComponent<MainShip>().GetEnergy(EnergyPerShot))
+                {
+                    Fire();
+                    AudioSource.PlayClipAtPoint(FireSound, transform.position);
+                    CurrTime += FIRERATE;
+                }
+                else
+                {
+                    Firing = false;
+                }
 			}
 			else
 			{
@@ -47,8 +63,5 @@ public class Shotgun : GunControl {
 		float Angle = transform.eulerAngles.z * Mathf.Deg2Rad;
 		Vector2 Force = new Vector2(Mathf.Cos(Angle), Mathf.Sin(Angle)) * -Knockback;
 		transform.parent.GetComponent<Rigidbody2D>().AddForce(Force, ForceMode2D.Impulse);
-
-		//Add Heat
-		transform.parent.GetComponent<MainShip>().Heat += HeatPerShot;
 	}
 }
