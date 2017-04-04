@@ -147,7 +147,7 @@ MonoBehaviour:
   FireSound: {fileID: 8300000, guid: 7c5562b4172936944b0d7a7314ce3596, type: 3}
   FIRERATE: 0.25
   Knockback: 1
-  EnergyPerShot: 3
+  EnergyPerShot: 2
   PlayerNum: 1
   Offset: 0
 --- !u!212 &212201789307676484

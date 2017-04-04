@@ -48,12 +48,14 @@ public class Shotgun : GunControl {
 	{
 		//Fire projectile
 		Transform gun = transform.GetChild(0);
+        float interval = Spread / (Pellets - 1);
+        float CurAngle = -(Spread / 2f);
 		for(int i = 0; i < Pellets; i++)
 		{
-			float rand = Random.value * Spread - (Spread / 2);
 			Quaternion dir = transform.rotation;
-			dir.eulerAngles = dir.eulerAngles + new Vector3(0, 0, rand);
+			dir.eulerAngles = dir.eulerAngles + new Vector3(0, 0, CurAngle);
 			GameObject Fired = (GameObject)Instantiate(Projectile, gun.position, dir);
+            CurAngle += interval;
 		}
 		
 		//Projectile Proj = Fired.GetComponent<Projectile>();

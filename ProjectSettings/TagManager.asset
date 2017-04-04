@@ -16,8 +16,8 @@ TagManager:
   - 
   - 
   - Projectile
-  - 
-  - 
+  - Background
+  - Foreground
   - 
   - 
   - 
@@ -43,12 +43,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: UnderShip
+  - name: Background
+    uniqueID: 2261782851
+    locked: 0
+  - name: Under
     uniqueID: 2328078397
     locked: 0
-  - name: Ship
+  - name: Main
     uniqueID: 1970813725
     locked: 0
-  - name: OverShip
+  - name: Over
     uniqueID: 2169588345
+    locked: 0
+  - name: Foreground
+    uniqueID: 430277479
     locked: 0

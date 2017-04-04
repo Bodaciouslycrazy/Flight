@@ -72,7 +72,7 @@ MonoBehaviour:
   DeathSound: {fileID: 0}
   AggroDist: 10
   Damage: 10
-  Impulse: 3
+  Impulse: 1.5
 --- !u!212 &212851930022744718
 SpriteRenderer:
   m_ObjectHideFlags: 1

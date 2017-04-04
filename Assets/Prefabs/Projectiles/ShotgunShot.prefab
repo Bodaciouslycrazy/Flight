@@ -90,7 +90,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 10
   Speed: 8
-  Timeout: 0.25
+  Timeout: 0.65
   Peircing: 0
   Target: Enemy
 --- !u!212 &212915431395640354
