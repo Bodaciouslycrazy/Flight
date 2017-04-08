@@ -16,7 +16,7 @@ public class Ship : MonoBehaviour {
         Ships.Add(this);
     }
 
-	public virtual void Hit(int Dam, GameObject Source)
+	public virtual void Hit(int Dam)
 	{
 		Health -= Dam;
 		if (Health <= 0)
@@ -37,7 +37,7 @@ public class Ship : MonoBehaviour {
         
         Ships.Remove(this);
         Destroy(gameObject);
-        AudioSource.PlayClipAtPoint(DeathSound, transform.position);
+        Util.AudioShot(DeathSound, transform.position);
     }
 
 	void OnTriggerEnter2D(Collider2D other)
@@ -45,7 +45,7 @@ public class Ship : MonoBehaviour {
 		Projectile Proj = other.GetComponent<Projectile>();
 		if (Proj != null && Proj.Target.Equals(tag))
 		{
-			Hit(Proj.Damage, Proj.gameObject);
+			Hit(Proj.Damage);
 		}
 	}
 

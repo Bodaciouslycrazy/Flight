@@ -84,7 +84,7 @@ public class GunControl : MonoBehaviour {
 		//Create Knockback
 		float Angle = transform.eulerAngles.z * Mathf.Deg2Rad;
 		Vector2 Force = new Vector2(Mathf.Cos(Angle), Mathf.Sin(Angle)) * -Knockback;
-		transform.parent.GetComponent<Rigidbody2D>().AddForce(Force, ForceMode2D.Impulse);		
+        transform.parent.GetComponent<Rigidbody2D>().AddForce(Force, ForceMode2D.Impulse);
 	}
 
     public struct ButtonInfo

@@ -10,9 +10,10 @@ public class Bomber : Enemy {
 	public float RandomAngle = 45; //degrees
 	private float CurrTime = 2;
 	
-	void Start()
+	public override void Start()
 	{
-		CurrTime = Random.value * JUMPRATE;
+        base.Start();
+        CurrTime = Random.value * JUMPRATE;
 	}
 
 	// Update is called once per frame
@@ -39,7 +40,7 @@ public class Bomber : Enemy {
 		//Blow the fuck up
 		if (col.gameObject.tag.Equals("Player"))
 		{
-			col.gameObject.GetComponent<Ship>().Hit(Damage, gameObject);
+			col.gameObject.GetComponent<Ship>().Hit(Damage);
 			Destroy(gameObject);
 		}
 

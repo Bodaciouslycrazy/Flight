@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Armored : Enemy {
 
-	public override void Hit(int Dam, GameObject Source)
+	public override void Hit(int Dam)
 	{
 		Dam = Mathf.Max(Dam - 5, 0);
-		base.Hit(Dam, Source);
+		base.Hit(Dam);
 	}
 }

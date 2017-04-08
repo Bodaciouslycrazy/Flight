@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1778549620283618}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.7, y: 1.84, z: 0}
+  m_LocalPosition: {x: 14.18, y: -13.03, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -90,7 +90,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 50
   MaxHealth: 50
-  DeathSound: {fileID: 8300000, guid: 3ee55edbb9168a147b8d961cac788652, type: 3}
+  DeathSound: {fileID: 8300000, guid: 48a9942a81597de49b57da752d536871, type: 3}
   AggroDist: 10
   Damage: 5
   Impulse: 5

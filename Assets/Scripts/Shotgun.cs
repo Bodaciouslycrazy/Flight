@@ -29,7 +29,7 @@ public class Shotgun : GunControl {
                 if (transform.parent.GetComponent<MainShip>().GetEnergy(EnergyPerShot))
                 {
                     Fire();
-                    AudioSource.PlayClipAtPoint(FireSound, transform.position);
+                    Util.AudioShot(FireSound, transform.position);
                     CurrTime += FIRERATE;
                 }
                 else

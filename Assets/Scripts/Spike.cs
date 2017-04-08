@@ -7,7 +7,7 @@ public class Spike : Enemy {
 	public int Damage = 10;
 	public float Impulse = 3f;
 
-	public override void Hit(int Dam, GameObject Source)
+	public override void Hit(int Dam)
 	{
 		//Do nothing. This enemy takes no damage.
 	}
@@ -16,7 +16,7 @@ public class Spike : Enemy {
 	{
 		if (col.gameObject.tag.Equals("Player"))
 		{
-			col.gameObject.GetComponent<Ship>().Hit(Damage, gameObject);
+			col.gameObject.GetComponent<Ship>().Hit(Damage);
 			Vector2 Dir = col.gameObject.transform.position - transform.position;
 			Dir.Normalize();
 

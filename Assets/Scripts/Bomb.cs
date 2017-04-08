@@ -6,6 +6,7 @@ public class Bomb : MonoBehaviour {
 
     public float SplashRange = 2;
     public int Damage = 15;
+    public int SelfDamage = 10;
     public float DetonationTime = 1f;
 
 	// Use this for initialization
@@ -30,10 +31,22 @@ public class Bomb : MonoBehaviour {
 
             if(Dist <= SplashRange)
             {
-                Ship.Ships[i].Hit(Damage, null);
+                if(Ship.Ships[i].tag.Equals("Player"))
+                {
+                    //Ship.Ships[i].Hit(SelfDamage);
+                }
+                else
+                {
+                    Ship.Ships[i].Hit(Damage);
+                }
             }
         }
 
         Destroy(gameObject);
+    }
+
+    public void OnCollisionEnter2D(Collision2D coll)
+    {
+        Explode();
     }
 }

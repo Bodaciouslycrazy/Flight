@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class MainShip : Ship {
 
 	public static GameObject Singleton;
-    public static int[] GunNums = { 0, -1, -1, -1 };
+    public static int[] GunNums = { 3, -1, -1, -1 };
     public GameObject[] GunPrefabs;
 
     public short Energy = 100;
@@ -17,7 +17,17 @@ public class MainShip : Ship {
 	private float TimeBank = 0f;
 
 	public Image HealthBar;
-	public Image HeatBar;
+	public Image EnergyBar;
+
+    public AudioClip HurtSound;
+
+    [Header("Hud Display Options")]
+    public float Delay = 3f;
+    public float Decay = 1f;
+    public float MaxAlpha = .25f;
+    protected float CurHealthShow = 0f;
+    protected float CurEnergyShow = 0f;
+    
 
 	public List<GunControl> Guns = new List<GunControl>();
 
@@ -50,9 +60,15 @@ public class MainShip : Ship {
             Energy = MaxEnergy;
         }
 
-		//Display henergy and health
+        //Display henergy and health
+        CurHealthShow += Time.deltaTime;
+        CurEnergyShow += Time.deltaTime;
+
 		HealthBar.fillAmount = (float)Health / (float)MaxHealth;
-		HeatBar.fillAmount = (float)Energy / (float)MaxEnergy;
+        HealthBar.color = GetHealthColor();
+
+		EnergyBar.fillAmount = (float)Energy / (float)MaxEnergy;
+
 	}
 
 	//Random Functions
@@ -78,5 +94,55 @@ public class MainShip : Ship {
         {
             return false;
         }
+    }
+
+    public float GetHealthAlpha()
+    {
+        float Show = 0f;
+        if (CurHealthShow < Delay)
+        {
+            Show = 1f;
+        }
+        else if(CurHealthShow - Delay < Decay)
+        {
+            Show = (1 - CurHealthShow + Delay) / Decay;
+        }
+
+        return Show * MaxAlpha;
+    }
+
+    public Color GetHealthColor()
+    {
+        float G = 0f;
+        float R = 0f;
+
+        if(Health > MaxHealth / 2f)
+        {
+            G = 1f;
+            R = (-2f * Health / MaxHealth) + 2f;
+        }
+        else
+        {
+            R = 1f;
+            G = 2f * Health / MaxHealth;
+        }
+
+        return new Color(R, G, 0, GetHealthAlpha());
+    }
+
+
+    //overrides
+    public override void Hit(int Dam)
+    {
+        base.Hit(Dam);
+        CurHealthShow = 0f;
+        Util.AudioShot(HurtSound, transform.position);
+    }
+
+    public override void Heal(int Value)
+    {
+        base.Heal(Value);
+        CurHealthShow = 0f;
+        //play heal sound
     }
 }
