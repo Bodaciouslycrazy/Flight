@@ -141,10 +141,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ddf72495dc45de43912345dfe4f8ba9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Projectile: {fileID: 1724479637332272, guid: fa1426dfd9ae14f49ac973e48e31c19c, type: 2}
+  Projectile: {fileID: 1533956288632542, guid: 31d5720ce125aa44180638379709468b, type: 2}
   Outline: {fileID: 212444362253658678}
   Fill: {fileID: 212234870031918788}
-  FireSound: {fileID: 8300000, guid: f2665d5f5b1c9434cb7c2e81fb0fc514, type: 3}
+  FireSound: {fileID: 8300000, guid: 7b46293f138fca9448612d5adffbbf23, type: 3}
   FIRERATE: 1.2
   Knockback: 3
   EnergyPerShot: 10

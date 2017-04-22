@@ -19,6 +19,20 @@ public class Util : MonoBehaviour {
         return Source;
     }
 
+	public static AudioSource AudioShot(AudioClip Clip, Transform Follow, float Vol = 1f)
+	{
+		GameObject Pref = Resources.Load("OneShotFollow") as GameObject;
+		GameObject Sound = Instantiate(Pref, Follow.position, Quaternion.Euler(0, 0, 0));
+		AudioSource Source = Sound.GetComponent<AudioSource>();
+		Sound.GetComponent<FollowObject>().Obj = Follow;
+
+		Source.clip = Clip;
+		Source.volume = Vol;
+		Source.Play();
+
+		return Source;
+	}
+
 	public static void UpdateButton(ref ButtonInfo Button)
 	{
 		bool LastFrame = Button.Down;

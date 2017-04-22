@@ -25,21 +25,11 @@ public class Projectile : MonoBehaviour {
 			Destroy(gameObject);
 			return;
 		}
-
-		/*
-		float Dist = Speed * Time.deltaTime;
-		float Angle = transform.eulerAngles.z * Mathf.Deg2Rad;
-		Vector2 Displacement = new Vector2(Mathf.Cos(Angle), Mathf.Sin(Angle)) * Dist;
-
-
-		Vector2 NewPos = (Vector2)transform.position + Displacement;
-		transform.position = NewPos;
-		*/
 	}
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		if (!(other.tag.Equals("Enemy") && Peircing) )
+		if (!(Peircing && other.tag.Equals("Enemy")) )
 		{
 			Destroy(gameObject);
 		}

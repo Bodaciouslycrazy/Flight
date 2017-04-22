@@ -3705,6 +3705,7 @@ MonoBehaviour:
   HealthBar: {fileID: 1088810882}
   EnergyBar: {fileID: 2010593776}
   HurtSound: {fileID: 8300000, guid: 48a9942a81597de49b57da752d536871, type: 3}
+  ChargeSound: {fileID: 8300000, guid: e8002ba99ff7fa346b332fef8fe32bc1, type: 3}
   Delay: 2
   Decay: 1
   MaxAlpha: 0.25
@@ -10249,7 +10250,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 9fee921fced420845ad4576833a90444, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0

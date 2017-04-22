@@ -20,6 +20,7 @@ public class MainShip : Ship {
 	public Image EnergyBar;
 
     public AudioClip HurtSound;
+	public AudioClip ChargeSound;
 	const float VolumePerSpeed = .5f;
 
     [Header("Hud Display Options")]
@@ -50,6 +51,7 @@ public class MainShip : Ship {
         {
             //Recharge Energy
             Energy = MaxEnergy;
+			Util.AudioShot(ChargeSound, transform);
         }
 
         //Display henergy and health
