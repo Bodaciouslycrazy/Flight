@@ -150,6 +150,7 @@ MonoBehaviour:
   EnergyPerShot: 10
   PlayerNum: 1
   Offset: 0.3
+  RotationSpeed: 120
   LaunchForce: 10
 --- !u!212 &212234870031918788
 SpriteRenderer:
@@ -252,7 +253,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1966888899
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9163409801e69cc4492eba39aa4e23a6, type: 3}
+  m_Sprite: {fileID: 21300004, guid: a3c0ce42c164796468872e8b41f5b9e3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

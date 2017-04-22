@@ -5,6 +5,7 @@ using UnityEngine;
 public class Health : MonoBehaviour {
 
     public int Value = 20;
+	public AudioClip Sound;
 
     void OnTriggerEnter2D(Collider2D coll)
     {
@@ -15,6 +16,7 @@ public class Health : MonoBehaviour {
             if(pl.Health < pl.MaxHealth)
             {
                 pl.Heal(Value);
+				Util.AudioShot(Sound, transform.position);
                 Destroy(gameObject);
             }
         }

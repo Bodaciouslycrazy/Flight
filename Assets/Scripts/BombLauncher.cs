@@ -12,7 +12,7 @@ public class BombLauncher : GunControl {
 
         //Update Angle
         UpdateRotation();
-        UpdateButton();
+        Util.UpdateButton(ref Button);
 
         if (Button.Pressed)
             Firing = true;

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class MainShip : Ship {
 
 	public static GameObject Singleton;
-    public static int[] GunNums = { 3, -1, -1, -1 };
+    protected static int[] GunNums = { -1,-1,-1,-1};
     public GameObject[] GunPrefabs;
 
     public short Energy = 100;
@@ -20,6 +20,7 @@ public class MainShip : Ship {
 	public Image EnergyBar;
 
     public AudioClip HurtSound;
+	const float VolumePerSpeed = .5f;
 
     [Header("Hud Display Options")]
     public float Delay = 3f;
@@ -38,16 +39,7 @@ public class MainShip : Ship {
 
         for(int i = 0; i < GunNums.Length; i++)
         {
-            if(GunNums[i] >= 0 && GunNums[i] < GunPrefabs.Length)
-            {
-                //Create Instance of gun
-                GunControl G = Instantiate(GunPrefabs[GunNums[i]], transform.position, transform.rotation, transform).GetComponent<GunControl>();
-                G.SetPlayer((short)(i + 1));
-            }
-            else
-            {
-                Debug.LogWarning("Gun number " + GunNums[i] + " does not exist.");
-            }
+			AddGun(i, GunNums[i]);
         }
 	}
 
@@ -69,6 +61,12 @@ public class MainShip : Ship {
 
 		EnergyBar.fillAmount = (float)Energy / (float)MaxEnergy;
 
+		//Change Hum Volume
+		float TargetVol = GetComponent<Rigidbody2D>().velocity.magnitude * VolumePerSpeed;
+		if (TargetVol > 1f)
+			TargetVol = 1f;
+		float Diff = (TargetVol - GetComponent<AudioSource>().volume) * .25f;
+		GetComponent<AudioSource>().volume += Diff;
 	}
 
 	//Random Functions
@@ -145,4 +143,56 @@ public class MainShip : Ship {
         CurHealthShow = 0f;
         //play heal sound
     }
+
+
+	//Change Guns
+	public static int GetGunNum(int PlayerNum)
+	{
+		return GunNums[PlayerNum];
+	}
+
+	public static void ChangeGun(int PlayerNum, int GunNum)
+	{
+		if(Singleton != null && GunNum >= 0 && GunNums[PlayerNum] < 0)
+		{
+			Singleton.GetComponent<MainShip>().AddGun(PlayerNum, GunNum);
+			GunNums[PlayerNum] = GunNum;
+		}
+		else if(Singleton != null && GunNum < 0 && GunNums[PlayerNum] >= 0)
+		{
+			Singleton.GetComponent<MainShip>().DeleteGun(PlayerNum);
+			GunNums[PlayerNum] = GunNum;
+		}
+		else
+		{
+			Debug.LogError("I can't change a player's gun, pnly add or remove.");
+		}
+	}
+
+	public void AddGun(int PlayerNumber, int GunNumber)
+	{
+		if (GunNumber >= 0 && GunNumber < GunPrefabs.Length)
+		{
+			//Create Instance of gun
+			GunControl G = Instantiate(GunPrefabs[GunNumber], transform.position, transform.rotation, transform).GetComponent<GunControl>();
+			G.SetPlayer((short)(PlayerNumber + 1));
+		}
+		else
+		{
+			Debug.LogWarning("Gun number " + GunNumber + " does not exist.");
+		}
+	}
+
+	public void DeleteGun(int PlayerNumber)
+	{
+		for(int i = 0; i < Guns.Count; i++)
+		{
+			if (Guns[i].PlayerNum == PlayerNumber)
+			{
+				Destroy(Guns[i].gameObject);
+				Guns.RemoveAt(i);
+				i--;
+			}
+		}
+	}
 }

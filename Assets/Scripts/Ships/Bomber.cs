@@ -9,6 +9,8 @@ public class Bomber : Enemy {
 	public float JUMPRATE = 2;
 	public float RandomAngle = 45; //degrees
 	private float CurrTime = 2;
+
+	public AudioClip JumpSound;
 	
 	public override void Start()
 	{
@@ -28,7 +30,11 @@ public class Bomber : Enemy {
 			float Angle = Mathf.Atan2(Force.y, Force.x) + (Random.value * RandomAngle * Mathf.Deg2Rad) - (RandomAngle * Mathf.Deg2Rad / 2f);
 			Force = new Vector2(Mathf.Cos(Angle), Mathf.Sin(Angle)) * Impulse;
 
+			transform.eulerAngles = new Vector3(0, 0, Mathf.Rad2Deg * Angle);
 			GetComponent<Rigidbody2D>().AddForce(Force, ForceMode2D.Impulse);
+
+			//Sound
+			Util.AudioShot(JumpSound, transform.position);
 
 		}
 		else if (CurrTime <= 0)

@@ -29,8 +29,9 @@ public class Fatty : Enemy {
 			}
 			else if(Dist < TargetDistance - TargetError)
 			{
-				Dir = transform.position - MainShip.Singleton.transform.position;
-				Dir.Normalize();
+				//do nothing
+				//Dir = transform.position - MainShip.Singleton.transform.position;
+				//Dir.Normalize();
 			}
 			GetComponent<Rigidbody2D>().AddForce(Dir * Impulse * Time.deltaTime, ForceMode2D.Force);
 

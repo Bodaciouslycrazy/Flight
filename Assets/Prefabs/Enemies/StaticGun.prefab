@@ -20,9 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4745005076637900}
   - component: {fileID: 212352778247868970}
-  - component: {fileID: 58320677958130242}
   - component: {fileID: 50891461875506298}
   - component: {fileID: 114461236743473166}
+  - component: {fileID: 60881981559393810}
   m_Layer: 0
   m_Name: StaticGun
   m_TagString: Enemy
@@ -36,13 +36,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1609242634842794}
-  m_LocalRotation: {x: -0, y: -0, z: 0.9102087, w: 0.4141499}
-  m_LocalPosition: {x: 35.78, y: -21.34, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: 0.9824352, w: 0.1866042}
+  m_LocalPosition: {x: 34.43, y: -22.18, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 131.06801}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 158.49101}
 --- !u!50 &50891461875506298
 Rigidbody2D:
   serializedVersion: 4
@@ -63,8 +63,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &58320677958130242
-CircleCollider2D:
+--- !u!60 &60881981559393810
+PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -75,8 +75,16 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.64
+  m_Points:
+    m_Paths:
+    - - {x: -0.3341179, y: 1.1080151}
+      - {x: -1.2730675, y: 1.1103897}
+      - {x: -1.26091, y: -1.1839066}
+      - {x: -0.32926178, y: -1.2043152}
+      - {x: 0.22072601, y: -0.97761726}
+      - {x: 0.4480298, y: -0.30735755}
+      - {x: 0.44779924, y: 0.24370897}
+      - {x: 0.19051743, y: 0.93772507}
 --- !u!114 &114461236743473166
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -125,7 +133,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bdb27e795038520458e1d70db939d447, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4ff43ce54558ebc458b4fdfbd0cbe16c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

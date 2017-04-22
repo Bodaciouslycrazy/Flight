@@ -53,7 +53,7 @@ GameObject:
   - component: {fileID: 4470603696010742}
   - component: {fileID: 114189963336297296}
   m_Layer: 0
-  m_Name: Rapidfire
+  m_Name: Repeater
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -150,6 +150,7 @@ MonoBehaviour:
   EnergyPerShot: 2
   PlayerNum: 1
   Offset: 0
+  RotationSpeed: 120
 --- !u!212 &212201789307676484
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -251,7 +252,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1966888899
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9163409801e69cc4492eba39aa4e23a6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a3c0ce42c164796468872e8b41f5b9e3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

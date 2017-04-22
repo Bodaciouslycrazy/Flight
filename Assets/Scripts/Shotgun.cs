@@ -12,7 +12,7 @@ public class Shotgun : GunControl {
 	void Update()
 	{
 		UpdateRotation();
-        UpdateButton();
+        Util.UpdateButton(ref Button);
 
         if (Button.Pressed)
             Firing = true;
