@@ -11,6 +11,8 @@ public class Projectile : MonoBehaviour {
 	public bool Peircing = false;
 	public string Target = "";
 
+	public GameObject HitEffect;
+
 	void Start()
 	{
 		float Angle = transform.eulerAngles.z * Mathf.Deg2Rad;

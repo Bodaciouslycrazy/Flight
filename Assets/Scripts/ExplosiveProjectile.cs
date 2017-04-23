@@ -64,6 +64,7 @@ public class ExplosiveProjectile : Projectile {
 			Targets[i].GetComponent<Ship>().Hit(ExplosionDamage);
 		}
 
+		Instantiate(HitEffect, transform.position, Quaternion.identity);
 		Util.AudioShot(Sound, transform.position);
 		Destroy(gameObject);
 	}

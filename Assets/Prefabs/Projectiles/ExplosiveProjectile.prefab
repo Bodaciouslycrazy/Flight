@@ -90,9 +90,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 25
   Speed: 10
-  Timeout: 0.75
+  Timeout: 0.6
   Peircing: 0
   Target: Enemy
+  HitEffect: {fileID: 1991701855984262, guid: 78b9655a5d8e0124cb3d42aafcf493d3, type: 2}
   ExplosionDamage: 100
   Sound: {fileID: 8300000, guid: 9580a36ae1cce044d816d47962c0277b, type: 3}
   Radius: 2
