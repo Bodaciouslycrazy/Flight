@@ -11,7 +11,9 @@ public class SpriteWithShadow : MonoBehaviour {
 	{
 		GameObject Pref = Resources.Load<GameObject>("Sprite");
 
-		GameObject go = Instantiate(Pref);
+        Vector2 SpawnPoint = Camera.current.transform.position;
+
+		GameObject go = Instantiate(Pref, (Vector3)SpawnPoint, Quaternion.identity);
 		// Ensure it gets reparented if this was a context click (otherwise does nothing)
 		GameObjectUtility.SetParentAndAlign(go, menuCommand.context as GameObject);
 		// Register the creation in the undo system
