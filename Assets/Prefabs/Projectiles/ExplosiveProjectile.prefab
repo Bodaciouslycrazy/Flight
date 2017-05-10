@@ -97,7 +97,7 @@ MonoBehaviour:
   ExplosionDamage: 100
   Sound: {fileID: 8300000, guid: 9580a36ae1cce044d816d47962c0277b, type: 3}
   Radius: 2
-  ActivationTime: 0.25
+  ActivationTime: 0.21
   Raycasts: 32
 --- !u!212 &212298919590613612
 SpriteRenderer:

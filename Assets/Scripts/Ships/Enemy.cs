@@ -8,11 +8,11 @@ public class Enemy : Ship {
 
     public virtual bool IsAggro()
     {
-        if(Vector2.Distance(transform.position, MainShip.Singleton.transform.position) > AggroDist)
+        if(MainShip.Singleton != null && Vector2.Distance(transform.position, MainShip.Singleton.transform.position) > AggroDist)
         {
             return false;
         }
-        else
+        else if(MainShip.Singleton != null)
         {
             RaycastHit2D RC = Physics2D.Raycast(transform.position, MainShip.Singleton.transform.position - transform.position, AggroDist);
 
@@ -24,5 +24,13 @@ public class Enemy : Ship {
                 return false;
         }
 
+		return false;
+
     }
+
+	public override void Hit(int Dam)
+	{
+		base.Hit(Dam);
+		Util.AudioShot(DeathSound, transform.position, 0.5f);
+	}
 }

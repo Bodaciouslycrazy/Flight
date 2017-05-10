@@ -11,6 +11,8 @@ public class Fatty : Enemy {
 	public float Impulse = .5f;
 	public float TargetDistance = 5f;
 	public float TargetError = .5f;
+
+	public AudioClip FireSound;
 	
 	// Update is called once per frame
 	void Update () {
@@ -48,11 +50,18 @@ public class Fatty : Enemy {
 
 					Vector2 Displacement = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * 2;
 					GameObject Proj = Instantiate(Projectile, transform.position + (Vector3)Displacement, Quaternion.Euler(0, 0, angle * Mathf.Rad2Deg)) as GameObject;
+					Util.AudioShot(FireSound, transform.position);
 				}
 			}
 
 
 
 		}
+	}
+
+	public override void Hit(int Dam)
+	{
+		base.Hit(Dam);
+		CurrTime = FIRERATE;
 	}
 }

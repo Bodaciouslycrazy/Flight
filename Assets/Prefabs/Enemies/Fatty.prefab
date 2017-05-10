@@ -90,13 +90,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 250
   MaxHealth: 250
-  DeathSound: {fileID: 8300000, guid: 3ee55edbb9168a147b8d961cac788652, type: 3}
+  DeathSound: {fileID: 8300000, guid: 48a9942a81597de49b57da752d536871, type: 3}
   AggroDist: 15
   Projectile: {fileID: 1515992754197902, guid: 518ea9fd701730649b2fd40d42ac3b87, type: 2}
   FIRERATE: 2
   Impulse: 150
   TargetDistance: 4
   TargetError: 0.5
+  FireSound: {fileID: 0}
 --- !u!212 &212374330642845214
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -104,13 +105,13 @@ SpriteRenderer:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1525275449582074}
   m_Enabled: 1
-  m_CastShadows: 0
+  m_CastShadows: 1
   m_ReceiveShadows: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 35394fa6a557c4e42ac81c1a6b7ac03a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -7,8 +7,12 @@ public class MainShip : Ship {
 
 	public static GameObject Singleton;
     protected static int[] GunNums = { -1,-1,-1,-1};
-    public GameObject[] GunPrefabs;
 
+	[Header("Prefab References")]
+    public GameObject[] GunPrefabs;
+	public GameObject DeathEffect;
+
+	[Header("Variables")]
     public short Energy = 100;
 	public short MaxEnergy = 100;
     public float Recharge = 2f;
@@ -16,12 +20,15 @@ public class MainShip : Ship {
 	
 	private float TimeBank = 0f;
 
+	[Header("Images")]
 	public Image HealthBar;
 	public Image EnergyBar;
 
+	[Header("Audio")]
     public AudioClip HurtSound;
 	public AudioClip ChargeSound;
-	const float VolumePerSpeed = .5f;
+	public float VolumePerSpeed = .5f;
+	public float MaxChargeVolume = .5f;
 
     [Header("Hud Display Options")]
     public float Delay = 3f;
@@ -65,8 +72,8 @@ public class MainShip : Ship {
 
 		//Change Hum Volume
 		float TargetVol = GetComponent<Rigidbody2D>().velocity.magnitude * VolumePerSpeed;
-		if (TargetVol > 1f)
-			TargetVol = 1f;
+		if (TargetVol > MaxChargeVolume)
+			TargetVol = MaxChargeVolume;
 		float Diff = (TargetVol - GetComponent<AudioSource>().volume) * .25f;
 		GetComponent<AudioSource>().volume += Diff;
 	}
@@ -146,6 +153,12 @@ public class MainShip : Ship {
         //play heal sound
     }
 
+	public override void Kill()
+	{
+		Instantiate(DeathEffect, transform.position, Quaternion.identity);
+		base.Kill();
+	}
+
 
 	//Change Guns
 	public static int GetGunNum(int PlayerNum)
@@ -197,4 +210,8 @@ public class MainShip : Ship {
 			}
 		}
 	}
+
+
+
+
 }
